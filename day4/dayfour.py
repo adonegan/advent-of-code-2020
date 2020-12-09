@@ -18,7 +18,6 @@ def is_valid_passport(pp):
 with open('input4.txt') as file:
     passport_data = file.readlines()
     passport_data = [line.strip() for line in passport_data]
-    # print(passport_data)
 
 validCount = 0
 
@@ -46,7 +45,7 @@ print(validCount)
 
 
 # PART2
-# Will need a separate function for each attribute
+# Will need a separate function for each field
 
 def is_valid_byr(byr):
     byr = int(byr)
@@ -121,7 +120,7 @@ def is_valid_pid(pid):
 
 def has_valid_data(passport):
     passport = passport.split() # split long string into list of substrings
-    data = {} # need to separate data from category
+    data = {} # to separate data from category
 
     for item in passport:
         key = item[:3] # first three items
