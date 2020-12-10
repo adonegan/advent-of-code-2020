@@ -45,6 +45,7 @@ def get_col(seat):
         return upper
 
 largest = 0
+ids = [] # starting PART 2
 # First step: open and read input file
 with open('input5.txt') as file:
     data = file.readlines()
@@ -56,7 +57,18 @@ with open('input5.txt') as file:
         col = get_col(seat[7:]) # the Rs and Ls
 
         id = row * 8 + col
-        if id > largest:
-            largest = id
+        # if id > largest:
+        #     largest = id
+        ids.append(id) # part2
 
-print(largest)
+print(max(ids))
+
+for id in ids:
+    if id+1 not in ids and id+2 in ids:
+        missing = id+1
+
+print(missing)
+# print(largest)
+
+# output part1 858
+# output part2 557
