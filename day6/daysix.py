@@ -11,7 +11,7 @@ def get_unique_answers(response):
             # duplicate handling
             questions.append(char)
 
-    return len(questions) # to know how many unique answers there area
+    return len(questions) # to know how many unique answers there are
 
 with open('input6.txt') as file:
     data = file.readlines()
@@ -37,3 +37,39 @@ for line in data:
 sum += get_unique_answers(currentResponse)
 
 print(sum)
+# output 6532
+
+# PART 2
+
+def get_unique_answer_all(responses):
+    questions = []
+
+    for char in responses[0]:
+        # checking first line
+        # needs to be reset for all characters
+        inAllLines = True 
+        for line in responses:
+            if char not in line:
+                inAllLines = False
+
+        if inAllLines and char not in questions:
+            questions.append(char)
+
+    return len(questions)
+
+sum = 0
+currentResponse = []
+# Keep lines separate in a list
+for line in data:
+    if line != '':
+        currentResponse.append(line)
+    else:
+        sum += get_unique_answer_all(currentResponse)
+        currentResponse = []
+
+sum += get_unique_answer_all(currentResponse)
+
+print(sum)
+# output 3427
+
+# Codealong with Dylan Codes https://www.youtube.com/watch?v=_pPgnryUEDw
